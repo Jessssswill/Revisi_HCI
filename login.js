@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (redirectUrl) {
                         window.location.href = decodeURIComponent(redirectUrl);
                     } else {
-                        window.location.href = 'home.html';
+                        window.location.href = 'index.html';
                     }
                 }, 1000);
 
