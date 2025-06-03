@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun - OLX Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css"> <link rel="stylesheet" href="settings.css">
+    <link rel="icon" href="../assets/Olx-indonesia-logo.svg 1.png" type="image/png"> <script>
+        // Konfigurasi Tailwind CSS
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        },
+                        colors: {
+                            'olx-blue': '#00A5EC',
+                            'olx-orange': '#FF7E00',
+                            'brand-dark': '#002F34',
+                            'text-primary': '#1F2937',
+                            'text-secondary': '#4B5563',
+                            'text-muted': '#9CA3AF',
+                            'header-bg': '#FFFFFF',
+                            'page-bg': '#F7FAFC',
+                            'card-bg': '#FFFFFF',
+                            'footer-bg': '#002F34',
+                            'border-default': '#E5E7EB',
+                            'input-border': '#D1D5DB',
+                            'input-focus-border': '#00A5EC',
+                            'success-bg': '#D1FAE5',
+                            'success-text': '#065F46',
+                            'error-bg': '#FEE2E2',
+                            'error-text': '#991B1B',
+                        }
+                    }
+                }
+            };
+        } else {
+            console.error("Tailwind CSS object not found.");
+        }
+    </script>
+</head>
+<body class="antialiased bg-page-bg text-text-primary">
+
+    <header id="mainHeader" class="bg-header-bg shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3 h-16">
+                <a href="javascript:history.back()" class="flex items-center space-x-2 text-olx-blue hover:opacity-80 transition-opacity" aria-label="Kembali ke halaman sebelumnya">
+                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="font-semibold text-sm sm:text-base">Kembali</span>
+                </a>
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button id="chatButtonHeader" title="Pesan" class="text-text-secondary hover:text-olx-blue transition p-2 rounded-full hover:bg-gray-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </button>
+                    <div class="relative">
+                        <button id="profileButtonHeader" aria-label="Tombol Profil Pengguna" aria-haspopup="true" aria-expanded="false" class="p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olx-blue">
+                            <img id="profileImageHeader" src="https://placehold.co/32x32/D1D5DB/4B5563?text=G&font=Inter&bold=true" alt="Profil Pengguna" class="w-8 h-8 rounded-full object-cover border-2 border-transparent">
+                        </button>
+                        <div id="profileDropdownHeader" class="dropdown-menu absolute right-0 mt-2 w-56 bg-card-bg rounded-md shadow-lg py-1 hidden border border-border-default z-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-brand-dark">Pengaturan</h1>
+            <p class="text-text-secondary">Kelola preferensi akun dan aplikasi Anda.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <aside class="w-full md:w-1/4 lg:w-1/5">
+                <nav class="space-y-1 bg-card-bg p-4 rounded-lg shadow-md">
+                    <a href="#preferensi-akun" class="settings-nav-item active group flex items-center px-3 py-2.5 text-sm font-medium rounded-md">
+                        <svg class="w-5 h-5 mr-3 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Preferensi Akun
+                    </a>
+                    <a href="#privasi" class="settings-nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-md">
+                        <svg class="w-5 h-5 mr-3 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Privasi
+                    </a>
+                    <a href="#notifikasi" class="settings-nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-md">
+                         <svg class="w-5 h-5 mr-3 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        Notifikasi
+                    </a>
+                    <a href="#akun-terhubung" class="settings-nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-md">
+                        <svg class="w-5 h-5 mr-3 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        Akun Terhubung
+                    </a>
+                    <a href="#tentang-aplikasi" class="settings-nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-md">
+                        <svg class="w-5 h-5 mr-3 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Tentang Aplikasi
+                    </a>
+                </nav>
+            </aside>
+
+            <section class="w-full md:w-3/4 lg:w-4/5">
+                <div id="settingsTabContent" class="bg-card-bg p-6 sm:p-8 rounded-lg shadow-md min-h-[400px]">
+                    <p class="text-center text-text-muted py-10">Memuat konten...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-footer-bg text-footer-link pt-10 pb-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p class="text-xs text-footer-text">&copy; 2006-2025 OLX Indonesia. Bagian dari OLX Group.</p>
+            </div>
+        </div>
+    </footer>
+
+    <template id="templatePreferensiAkun">
+        <h2 class="text-2xl font-semibold text-brand-dark mb-6 border-b pb-3">Preferensi Akun</h2>
+        <form id="formPreferensiAkun" class="space-y-6">
+            <div>
+                <label for="settingLanguage" class="block text-sm font-medium text-text-primary mb-1">Bahasa Aplikasi</label>
+                <select id="settingLanguage" name="language" class="form-select">
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div>
+                <label for="settingTheme" class="block text-sm font-medium text-text-primary mb-1">Tema Tampilan</label>
+                <select id="settingTheme" name="theme" class="form-select">
+                    <option value="system">Sesuai Sistem</option>
+                    <option value="light">Terang</option>
+                    <option value="dark">Gelap</option>
+                </select>
+                <p class="text-xs text-text-muted mt-1">Tema gelap akan segera hadir!</p>
+            </div>
+             <div>
+                <label for="settingRegion" class="block text-sm font-medium text-text-primary mb-1">Wilayah Default</label>
+                <input type="text" id="settingRegion" name="region" class="form-input" placeholder="cth: Jakarta">
+                <p class="text-xs text-text-muted mt-1">Digunakan untuk pencarian dan rekomendasi awal.</p>
+            </div>
+            <div class="pt-2">
+                <button type="submit" class="btn-primary">Simpan Preferensi</button>
+            </div>
+        </form>
+    </template>
+
+    <template id="templatePrivasi">
+        <h2 class="text-2xl font-semibold text-brand-dark mb-6 border-b pb-3">Pengaturan Privasi</h2>
+        <div class="space-y-6">
+            <div>
+                <h3 class="text-lg font-medium text-text-primary mb-2">Visibilitas Profil</h3>
+                <div class="flex items-center justify-between p-4 border border-border-default rounded-lg bg-gray-50">
+                    <div>
+                        <p class="font-medium text-text-primary">Siapa yang dapat melihat profil Anda</p>
+                        <p class="text-sm text-text-muted">Atur apakah profil Anda publik atau hanya untuk pengguna terdaftar.</p>
+                    </div>
+                    <select id="profileVisibility" class="form-select w-auto">
+                        <option value="public">Publik</option>
+                        <option value="registered">Pengguna Terdaftar</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-text-primary mb-2">Riwayat Pencarian</h3>
+                 <div class="flex items-center justify-between p-4 border border-border-default rounded-lg bg-gray-50">
+                    <div>
+                        <p class="font-medium text-text-primary">Simpan riwayat pencarian</p>
+                        <p class="text-sm text-text-muted">Memungkinkan OLX menyimpan pencarian Anda untuk rekomendasi yang lebih baik.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="saveSearchHistory" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button id="clearSearchHistoryButton" class="btn-secondary-outline mt-3 text-sm">Hapus Riwayat Pencarian</button>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-text-primary mb-2">Data yang Dibagikan</h3>
+                <p class="text-sm text-text-secondary mb-3">Kelola bagaimana data Anda digunakan untuk personalisasi dan iklan.</p>
+                <a href="privacy-policy.html" class="text-sm text-olx-blue hover:underline">Baca Kebijakan Privasi kami</a>
+            </div>
+             <div class="pt-2">
+                <button type="button" id="savePrivacySettings" class="btn-primary">Simpan Pengaturan Privasi</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="templateNotifikasi">
+        <h2 class="text-2xl font-semibold text-brand-dark mb-6 border-b pb-3">Pengaturan Notifikasi</h2>
+        <form id="formNotifikasiSettings" class="space-y-5">
+            <div class="setting-item-toggle">
+                <div>
+                    <h3 class="font-medium text-text-primary">Pesan Baru</h3>
+                    <p class="text-sm text-text-muted">Dapatkan notifikasi saat ada pesan baru masuk.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="settingsNotifPesanBaru" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="setting-item-toggle">
+                <div>
+                    <h3 class="font-medium text-text-primary">Update Iklan</h3>
+                    <p class="text-sm text-text-muted">Notifikasi tentang status iklan Anda.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="settingsNotifUpdateIklan" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="setting-item-toggle">
+                <div>
+                    <h3 class="font-medium text-text-primary">Promosi OLX</h3>
+                    <p class="text-sm text-text-muted">Info promosi dan penawaran menarik dari OLX.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="settingsNotifPromosiOlx">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+             <div class="pt-2">
+                <button type="submit" class="btn-primary">Simpan Pengaturan Notifikasi</button>
+            </div>
+        </form>
+    </template>
+
+    <template id="templateAkunTerhubung">
+        <h2 class="text-2xl font-semibold text-brand-dark mb-6 border-b pb-3">Akun Terhubung</h2>
+        <div class="space-y-4">
+            <div class="setting-item-connect">
+                <div class="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" class="w-8 h-8">
+                    <div>
+                        <h3 class="font-medium text-text-primary">Google</h3>
+                        <p class="text-sm text-text-muted" id="googleConnectStatus">Belum terhubung</p>
+                    </div>
+                </div>
+                <button id="connectGoogleButton" class="btn-secondary-outline text-sm">Hubungkan</button>
+            </div>
+            <div class="setting-item-connect">
+                 <div class="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" class="w-8 h-8">
+                    <div>
+                        <h3 class="font-medium text-text-primary">Facebook</h3>
+                        <p class="text-sm text-text-muted" id="facebookConnectStatus">Terhubung sebagai Budi Santoso</p>
+                    </div>
+                </div>
+                <button id="disconnectFacebookButton" class="btn-danger-outline text-sm">Putuskan</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="templateTentangAplikasi">
+        <h2 class="text-2xl font-semibold text-brand-dark mb-6 border-b pb-3">Tentang Aplikasi</h2>
+        <div class="space-y-4 text-sm text-text-secondary">
+            <div class="flex justify-between">
+                <span>Versi Aplikasi:</span>
+                <span class="font-medium text-text-primary" id="appVersion">1.2.5 (Build 20250601)</span>
+            </div>
+            <hr class="border-border-default">
+            <p>OLX Indonesia adalah platform jual beli online terkemuka yang menghubungkan jutaan penjual dan pembeli di seluruh Indonesia.</p>
+            <ul class="list-disc list-inside space-y-2 mt-4">
+                <li><a href="terms.html" class="text-olx-blue hover:underline">Syarat & Ketentuan</a></li>
+                <li><a href="privacy-policy.html" class="text-olx-blue hover:underline">Kebijakan Privasi</a></li>
+                <li><a href="licenses.html" class="text-olx-blue hover:underline">Lisensi Open Source</a></li>
+            </ul>
+            <p class="mt-6 text-xs text-text-muted">© OLX Indonesia. Semua hak cipta dilindungi.</p>
+        </div>
+    </template>
+
+    <script src="global.js"></script> <script src="settings.js"></script>
+</body>
+</html>

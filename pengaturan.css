@@ -1,0 +1,168 @@
+.settings-nav-item {
+    color: #4B5563; 
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.settings-nav-item:hover {
+    background-color: #F3F4F6;
+    color: #00A5EC;
+}
+.settings-nav-item:hover svg {
+    color: #00A5EC; 
+}
+
+.settings-nav-item.active {
+    background-color: #EBF8FF; 
+    color: #00A5EC; 
+    font-weight: 600; 
+}
+.settings-nav-item.active svg {
+    color: #00A5EC; 
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #D1D5DB; 
+    border-radius: 0.5rem; 
+    font-size: 0.875rem; 
+    color: #1F2937; 
+    background-color: #FFFFFF; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #00A5EC; 
+    box-shadow: 0 0 0 3px rgba(0, 165, 236, 0.2);
+}
+.form-select {
+    appearance: none; 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7281' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    padding-right: 2.5rem; 
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0; 
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #D1D5DB; 
+    transition: .3s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+}
+input:checked + .slider {
+    background-color: #00A5EC; 
+}
+input:focus + .slider {
+    box-shadow: 0 0 0 2px rgba(0, 165, 236, 0.2); 
+}
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+.slider.round {
+    border-radius: 24px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.setting-item-toggle, .setting-item-connect {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem; 
+    border: 1px solid #E5E7EB; 
+    border-radius: 0.5rem; 
+    background-color: #F9FAFB; 
+}
+.setting-item-toggle > div:first-child, .setting-item-connect > div:first-child {
+    margin-right: 1rem; 
+}
+
+.btn-primary {
+    background-color: #FF7E00; 
+    color: white;
+    padding: 0.625rem 1.5rem; 
+    border-radius: 0.5rem;
+    font-weight: 600; 
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+    background-color: #EA580C; 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary-outline {
+    background-color: transparent;
+    color: #00A5EC; 
+    border: 1px solid #00A5EC;
+    padding: 0.5rem 1.25rem; 
+    border-radius: 0.5rem;
+    font-weight: 500; 
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-secondary-outline:hover {
+    background-color: #EBF8FF; 
+    color: #007BB5; 
+}
+
+.btn-danger-outline {
+    background-color: transparent;
+    color: #DC2626; 
+    border: 1px solid #DC2626;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-danger-outline:hover {
+    background-color: #FEE2E2; 
+    color: #B91C1C; 
+}
+
+.status-message-settings {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+    border-width: 1px;
+    border-style: solid;
+}
+.status-message-settings.success {
+    background-color: #D1FAE5; 
+    color: #065F46; 
+    border-color: #A7F3D0; 
+}
+.status-message-settings.error {
+    background-color: #FEE2E2; 
+    color: #991B1B; 
+    border-color: #FECACA; 
+}

@@ -1,0 +1,103 @@
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background-color: #F7FAFC; 
+}
+
+.chat-container-main {
+    height: calc(100vh - 64px); 
+}
+
+.messages-area-height {
+    height: calc(100% - 60px - 76px);
+}
+
+.sidebar-item.active {
+    background-color: #EBF8FF; 
+    color: #00A5EC; 
+    font-weight: 600;
+}
+
+.sidebar-item.active svg {
+    color: #00A5EC; 
+}
+
+.chat-item.active {
+    background-color: #EBF8FF; 
+    border-left: 3px solid #00A5EC; 
+}
+
+.chat-item.active h3 {
+    font-weight: 600;
+}
+
+#chatList::-webkit-scrollbar,
+#messagesArea::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatList::-webkit-scrollbar-thumb,
+#messagesArea::-webkit-scrollbar-thumb {
+    background-color: #CBD5E0;
+    border-radius: 3px;
+}
+
+#chatList::-webkit-scrollbar-thumb:hover,
+#messagesArea::-webkit-scrollbar-thumb:hover {
+    background-color: #A0AEC0; 
+}
+
+.dropdown-menu {
+    z-index: 60; 
+}
+
+#searchChatInput:focus {
+    box-shadow: 0 0 0 2px rgba(0, 165, 236, 0.2); 
+}
+
+.message-bubble {
+    max-width: 75%; 
+    word-wrap: break-word; 
+}
+.message-bubble img { 
+    max-width: 100%;
+    border-radius: 0.5rem; 
+    margin-top: 0.5rem; 
+}
+
+@keyframes fadeInMessage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.new-message-animate {
+    animation: fadeInMessage 0.3s ease-out;
+}
+
+#noChatSelectedPlaceholder svg {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    animation: drawIcon 1s ease-out forwards 0.5s;
+}
+@keyframes drawIcon {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (max-width: 767px) { 
+    #chatList.hidden-on-mobile-when-chat-active {
+        display: none !important;
+    }
+    #mainChatArea.force-flex-on-mobile { 
+        display: flex !important;
+    }
+    #leftSidebar {
+         width: 4rem; 
+    }
+    #leftSidebar .hidden.md\\:inline { 
+        display: none !important;
+    }
+     #leftSidebar .sidebar-item {
+        justify-content: center; 
+    }
+}

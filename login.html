@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - OLX Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="../assets/Olx-indonesia-logo.svg 1.png" type="image/png"> <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof tailwind !== 'undefined') {
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            fontFamily: {
+                                inter: ['Inter', 'sans-serif']
+                            },
+                            colors: {
+                                'olx-blue': '#00A5EC',
+                                'olx-orange': '#FF7E00',
+                                'brand-dark': '#002F34',
+                                'brand-dark-secondary': '#004F58',
+                                'text-primary': '#1F2937',
+                                'text-secondary': '#4B5563',
+                                'text-muted': '#6B7281',
+                                'bg-page': '#F9FAFB',
+                                'bg-card': '#FFFFFF',
+                                'bg-header': '#FFFFFF',
+                                'bg-footer': '#002F34',
+                                'border-default': '#E5E7EB',
+                                'border-input': '#D1D5DB',
+                                'border-input-focus': '#00A5EC',
+                                'success': '#10B981',
+                                'error': '#EF4444',
+                                'warning': '#F59E0B',
+                                'footer-link': '#CBD5E1',
+                                'footer-text': '#94A3B8'
+                            }
+                        }
+                    }
+                };
+                console.log("Login Page: Tailwind config applied.");
+            } else {
+                console.error("Login Page: Tailwind CSS object not found for config. Ensure CDN script is loaded before this.");
+            }
+        });
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 bg-bg-page">
+
+    <main class="bg-bg-card p-6 sm:p-10 rounded-xl shadow-2xl w-full max-w-md" id="loginBox">
+        <header class="text-center mb-8">
+                <img src="../assets/Olx-indonesia-logo.svg 1.png"
+                     alt=""
+                     class="mx-auto mb-6 h-10 sm:h-12 hover:opacity-80 transition-opacity duration-200"
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x50/00A5EC/FFFFFF?text=OLX+Logo';">
+            <h1 class="text-xl sm:text-2xl font-bold text-brand-dark">Masuk ke Akun OLX</h1>
+            <p class="text-text-secondary text-sm sm:text-base mt-2">Selamat datang! Lanjutkan jual beli mudah dan aman.</p>
+        </header>
+
+        <form id="loginForm" class="space-y-5" novalidate>
+            <div>
+                <label for="email" class="block text-sm font-medium text-text-primary mb-1.5">Alamat Email atau Username</label>
+                <div class="input-icon-wrapper">
+                    <svg class="input-icon h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <input type="text" id="email" name="email" placeholder="cth: pengguna@olx.co.id"
+                           class="form-input input-field w-full pr-3 py-2.5 border border-border-input rounded-lg shadow-sm transition duration-150 ease-in-out text-sm focus:border-olx-blue focus:ring-2 focus:ring-olx-blue" required aria-describedby="emailError">
+                </div>
+                <p id="emailError" class="error-message" aria-live="polite"></p>
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-text-primary mb-1.5">Password</label>
+                <div class="input-icon-wrapper">
+                    <svg class="input-icon h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password Anda"
+                           class="form-input input-field w-full pr-10 py-2.5 border border-border-input rounded-lg shadow-sm transition duration-150 ease-in-out text-sm focus:border-olx-blue focus:ring-2 focus:ring-olx-blue" required aria-describedby="passwordError">
+                    <button type="button" id="togglePassword" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 px-3 flex items-center text-text-muted hover:text-olx-blue focus:outline-none focus:ring-1 focus:ring-olx-blue rounded-r-lg transition-colors">
+                        <svg id="eyeIcon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <svg id="eyeSlashIcon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7 1.274 4.057 5.064-7 9.542-7 .847 0 1.668.124 2.452.35M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c.062-.168.12-.338.172-.51M3.062 6.063A14.903 14.903 0 001.001 12c.634 2.028 1.926 3.821 3.596 5.19M21 12c-.062.167-.12.337-.172.509M19.938 17.937A14.903 14.903 0 0022.999 12c-.634-2.028-1.926-3.821-3.596-5.19M1.5 1.5l21 21"></path></svg>
+                    </button>
+                </div>
+                <p id="passwordError" class="error-message" aria-live="polite"></p>
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" class="form-checkbox h-4 w-4 text-olx-blue border-border-input rounded focus:ring-olx-blue focus:ring-offset-0">
+                    <label for="remember-me" class="ml-2 block text-text-secondary cursor-pointer">Ingat saya</label>
+                </div>
+                <div>
+                    <a href="#" class="font-medium text-olx-blue hover:text-olx-orange hover:underline transition duration-150 ease-in-out">Lupa password?</a>
+                </div>
+            </div>
+
+            <div id="formError" class="text-sm text-error text-center error-message" aria-live="assertive"></div>
+
+            <button type="submit" id="loginButton"
+                    class="w-full bg-olx-blue text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-olx-blue focus:ring-offset-2 shadow-md hover:shadow-lg transition-all duration-150 ease-in-out transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center">
+                <span class="button-text">Masuk</span>
+                <svg class="button-loader animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </form>
+
+        <div class="my-6">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-border-default"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-bg-card text-text-secondary">atau lanjutkan dengan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <button type="button" aria-label="Masuk dengan Google" class="w-full flex items-center justify-center py-2.5 px-4 border border-border-input rounded-lg shadow-sm bg-white text-text-primary hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-olx-blue focus:ring-offset-1 transition duration-150 ease-in-out text-sm font-medium">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google logo" class="h-5 w-5 mr-2.5" onerror="this.style.display='none'">
+                Masuk dengan Google
+            </button>
+            <button type="button" aria-label="Masuk dengan Facebook" class="w-full flex items-center justify-center py-2.5 px-4 border border-border-input rounded-lg shadow-sm bg-white text-text-primary hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-olx-blue focus:ring-offset-1 transition duration-150 ease-in-out text-sm font-medium">
+                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook logo" class="h-5 w-5 mr-2.5" onerror="this.style.display='none'">
+                Masuk dengan Facebook
+            </button>
+        </div>
+
+        <p class="mt-8 text-center text-sm text-text-secondary">
+            Belum punya akun OLX?
+            <a href="register.html" class="font-semibold text-olx-blue hover:text-olx-orange hover:underline transition duration-150 ease-in-out">Daftar di sini</a>
+        </p>
+
+        <div id="successMessage" class="mt-4 p-3 bg-green-50 text-success rounded-lg text-center hidden text-sm transition-opacity duration-300" aria-live="assertive">
+            </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.no-scrollbar::-webkit-scrollbar {
+    display: none; 
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+#heroBanner .swiper-slide img {
+    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+}
+
+.category-nav-item.active {
+    background-color: #00A5EC; 
+    color: white;
+}
+
+.dropdown-menu a:hover, .dropdown-menu button:hover {
+    background-color: #f3f4f6; 
+}
+
+.product-list-loading::after {
+    content: 'Memuat produk...';
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: #4B5563; 
+}

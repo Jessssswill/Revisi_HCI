@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan - OLX Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css"> <link rel="stylesheet" href="chat.css">
+    <link rel="icon" href="../assets/Olx-indonesia-logo.svg 1.png" type="image/png"> <script>
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        },
+                        colors: {
+                            'olx-blue': '#00A5EC',
+                            'olx-orange': '#FF7E00',
+                            'brand-dark': '#002F34',
+                            'header-bg': '#FFFFFF',
+                            'chat-bg': '#F7FAFC',
+                            'chat-list-bg': '#FFFFFF',
+                            'chat-list-active-bg': '#EBF8FF',
+                            'message-sent-bg': '#DCF8C6',
+                            'message-received-bg': '#FFFFFF',
+                            'border-default': '#E5E7EB',
+                            'text-primary': '#1F2937',
+                            'text-secondary': '#4B5563',
+                            'text-muted': '#9CA3AF',
+                        }
+                    }
+                }
+            };
+        } else {
+            console.error("Tailwind CSS object not found.");
+        }
+    </script>
+</head>
+<body class="text-text-primary">
+
+    <header id="mainHeader" class="bg-header-bg shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3 h-16">
+                <a href="index.html" class="flex items-center space-x-2 text-olx-blue hover:opacity-80 transition-opacity" aria-label="Kembali ke Beranda">
+                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="font-semibold text-sm sm:text-base">Kembali</span>
+                </a>
+                <h1 class="text-lg sm:text-xl font-semibold text-brand-dark">Pesan Saya</h1>
+                <div class="relative">
+                    <button id="profileButtonHeader" aria-label="Tombol Profil Pengguna" aria-haspopup="true" aria-expanded="false" class="p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olx-blue">
+                        <img id="profileImageHeader" src="https://placehold.co/32x32/D1D5DB/4B5563?text=G&font=Inter&bold=true" alt="Profil Pengguna" class="w-8 h-8 rounded-full object-cover border-2 border-transparent">
+                    </button>
+                    <div id="profileDropdownHeader" class="dropdown-menu absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 hidden border border-border-default">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex chat-container-main">
+        <aside id="leftSidebar" class="w-16 sm:w-20 md:w-64 bg-white border-r border-border-default p-2 sm:p-4 space-y-3 flex flex-col transition-all duration-300 ease-in-out">
+            <a href="index.html" aria-label="Dasbor" class="sidebar-item flex items-center space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-100 transition text-text-secondary hover:text-olx-blue group">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span class="hidden md:inline text-sm font-medium">Dasbor</span>
+            </a>
+            <a href="chat.html" aria-label="Pesan" class="sidebar-item active flex items-center space-x-3 p-2 sm:p-3 rounded-lg text-olx-blue bg-chat-list-active-bg group">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                <span class="hidden md:inline text-sm font-medium">Pesan</span>
+            </a>
+             <a href="contacts.html" aria-label="Kontak" class="sidebar-item flex items-center space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-100 transition text-text-secondary hover:text-olx-blue group">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.034 11.034 0 005.372 5.372l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 12.72V16a2 2 0 01-2 2h-1C9.716 18 3 11.284 3 5z"></path></svg>
+                <span class="hidden md:inline text-sm font-medium">Kontak</span>
+            </a>
+            <div class="mt-auto">
+                <a href="pengaturan.html" aria-label="Pengaturan" class="sidebar-item flex items-center space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-100 transition text-text-secondary hover:text-olx-blue group">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-text-muted group-hover:text-olx-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span class="hidden md:inline text-sm font-medium">Pengaturan</span>
+                </a>
+            </div>
+        </aside>
+
+        <section id="chatList" class="w-full md:w-2/5 lg:w-1/3 xl:w-1/4 bg-chat-list-bg border-r border-border-default flex flex-col">
+            <div class="p-4 border-b border-border-default">
+                <input type="text" id="searchChatInput" placeholder="Cari atau mulai chat baru" class="w-full py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-olx-blue focus:border-olx-blue transition-shadow shadow-sm">
+            </div>
+            <div id="chatListContainer" class="flex-1 overflow-y-auto">
+                <p id="noChatsMessage" class="p-4 text-center text-text-muted hidden">Tidak ada percakapan.</p>
+                </div>
+        </section>
+
+        <main id="mainChatArea" class="flex-1 bg-chat-bg flex flex-col hidden md:flex">
+            <header id="chatActiveHeader" class="bg-white p-3 border-b border-border-default flex items-center justify-between shadow-sm h-[60px]">
+                <div class="flex items-center space-x-3">
+                    <button id="backToChatListButton" class="md:hidden text-olx-blue p-1.5 rounded-full hover:bg-gray-100" aria-label="Kembali ke daftar chat">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <img id="chattingWithAvatarHeader" src="https://placehold.co/36x36/CBD5E0/FFFFFF?text=?&font=Inter" alt="Avatar Kontak" class="w-9 h-9 rounded-full">
+                    <div>
+                        <h2 id="chattingWithName" class="text-sm sm:text-base font-semibold text-text-primary">Pilih Percakapan</h2>
+                        <p id="chattingWithStatus" class="text-xs text-green-500"></p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <button id="chatOptionsButton" aria-label="Opsi lainnya untuk chat ini" aria-haspopup="true" aria-expanded="false" class="text-text-muted hover:text-olx-blue p-2 rounded-full">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                    </button>
+                    <div id="chatOptionsDropdown" class="dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden border border-border-default">
+                        <a href="#" id="viewProfileChatOption" class="block px-4 py-2 text-sm text-text-primary hover:bg-gray-100 transition">Lihat Profil</a>
+                        <a href="#" id="blockUserChatOption" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition">Blokir Pengguna</a>
+                        <a href="#" id="clearChatOption" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition">Hapus Chat</a>
+                    </div>
+                </div>
+            </header>
+
+            <div id="messagesArea" class="messages-area-height flex-1 p-4 space-y-4 overflow-y-auto">
+                <p id="selectChatMessage" class="text-center text-text-muted mt-10 hidden">Pilih percakapan untuk memulai.</p>
+                </div>
+
+            <footer id="messageInputFooter" class="bg-white p-3 border-t border-border-default">
+                <div class="flex items-center space-x-2">
+                    <button id="attachmentButton" aria-label="Lampirkan file" class="text-text-muted hover:text-olx-blue p-2 rounded-full">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                    </button>
+                    <input type="text" id="messageInput" placeholder="Ketik pesan Anda di sini..." class="flex-1 py-2.5 px-3 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-olx-blue focus:border-olx-blue transition-shadow shadow-sm">
+                    <button id="sendMessageButton" aria-label="Kirim pesan" class="bg-olx-blue text-white p-2.5 rounded-full hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.789 0l-2 5a1 1 0 00.951 1.447h4a1 1 0 00.951-1.447l-2-5zM10.95 11.047l-2.12-.002L2.9 12.49A1 1 0 003 14h14a1 1 0 001-1.51l-5.95-1.445z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <p id="inputError" class="text-red-500 text-xs mt-1.5 h-4"></p>
+            </footer>
+        </main>
+         <div id="noChatSelectedPlaceholder" class="flex-1 bg-chat-bg flex-col items-center justify-center p-10 text-center text-text-muted hidden md:flex">
+            <svg class="w-24 h-24 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <h2 class="text-xl font-semibold mb-2">Selamat Datang di Pesan OLX</h2>
+            <p>Pilih percakapan dari daftar di sebelah kiri untuk melihat pesan atau mulai percakapan baru.</p>
+        </div>
+    </div>
+
+    <script src="global.js"></script> <script src="chat.js"></script>
+</body>
+</html>

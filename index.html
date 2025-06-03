@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLX Indonesia - Jual Beli Mudah & Cepat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="../assets/Olx-indonesia-logo.svg 1.png" type="image/png"> <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: { inter: ['Inter', 'sans-serif'] },
+                        colors: {
+                            'olx-blue': '#00A5EC', 'olx-orange': '#FF7E00',
+                            'brand-dark': '#002F34', 'brand-dark-secondary': '#004F58',
+                            'text-primary': '#1F2937', 'text-secondary': '#4B5563',
+                            'text-muted': '#9CA3AF', 'bg-page': '#F7FAFC',
+                            'bg-card': '#FFFFFF', 'bg-header': '#FFFFFF',
+                            'bg-footer': '#002F34', 'border-default': '#E5E7EB',
+                            'border-input': '#D1D5DB', 'success': '#10B981', 'error': '#EF4444',
+                            'footer-link': '#E0E0E0', 'footer-text': '#A0A0A0',
+                        }
+                    }
+                }
+            }
+        } else {
+            console.error("Tailwind CSS object not found. Pastikan CDN Tailwind dimuat sebelum skrip ini.");
+        }
+    </script>
+    <style>
+        .swiper-button-next, .swiper-button-prev {
+            color: #FFFFFF !important;
+            background-color: rgba(0, 47, 52, 0.4);
+            width: 2.75rem; height: 2.75rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s ease;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: rgba(0, 47, 52, 0.6);
+        }
+        .swiper-button-next::after, .swiper-button-prev::after { font-size: 0.875rem !important; }
+        .swiper-pagination-bullet { background: rgba(255,255,255,0.5); opacity: 1;}
+        .swiper-pagination-bullet-active { background: #FFFFFF !important; }
+
+        .login-prompt-modal-overlay {
+            background-color: rgba(0, 0, 0, 0.65);
+            transition: opacity 0.3s ease-in-out;
+        }
+        .login-prompt-modal-content {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .login-prompt-modal-overlay.hidden .login-prompt-modal-content {
+            transform: translateY(-30px) scale(0.9);
+            opacity: 0;
+        }
+        .login-prompt-modal-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .dropdown-menu {
+            z-index: 70; 
+        }
+    </style>
+</head>
+<body class="antialiased bg-bg-page text-text-primary">
+
+    <div id="loginPromptModalOverlay" class="login-prompt-modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="loginPromptTitle">
+        <div id="loginPromptModalContent" class="login-prompt-modal-content bg-bg-card p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-md transform opacity-100 scale-100">
+            <div class="text-center">
+                <img src="../assets/Olx-indonesia-logo.svg 1.png" alt="OLX Logo" class="mx-auto mb-5 h-10" onerror="this.onerror=null; this.src='https://placehold.co/150x50/00A5EC/FFFFFF?text=OLX+Logo';">
+                <h2 id="loginPromptTitle" class="text-xl font-bold text-brand-dark mb-2">Akses Lebih Luas dengan Akun OLX!</h2>
+                <p class="text-text-secondary text-sm mb-6">Masuk atau daftar untuk menikmati semua fitur, menyimpan favorit, dan bertransaksi dengan aman.</p>
+                <div class="space-y-3">
+                    <a href="login.html" id="goToLoginButtonFromModal" class="block w-full bg-olx-blue text-white py-2.5 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-olx-blue focus:ring-offset-2 transition duration-150 ease-in-out shadow-sm hover:shadow-md">
+                        Masuk / Daftar Sekarang
+                    </a>
+                    <button id="dismissLoginPromptButton" aria-label="Tutup notifikasi login" class="block w-full bg-gray-200 text-text-secondary py-2.5 px-4 rounded-lg font-semibold hover:bg-gray-300 transition duration-150 ease-in-out">
+                        Lain Kali Saja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="mainHeader" class="bg-bg-header shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                    <img src="../assets/Olx-indonesia-logo.svg 1.png" alt="" class="h-8 md:h-9" onerror="this.onerror=null; this.src='https://placehold.co/150x50/00A5EC/FFFFFF?text=OLX+Logo';">
+                <div class="relative flex-grow max-w-2xl mx-4 hidden sm:block">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-text-muted" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    </span>
+                    <input type="text" id="searchInputDesktop" aria-label="Kolom Pencarian" placeholder="Cari di OLX (cth: iPhone X, Honda Jazz)"
+                           class="w-full py-2.5 pl-10 pr-4 border border-border-input rounded-md focus:ring-2 focus:ring-olx-blue focus:border-olx-blue transition text-sm shadow-sm">
+                </div>
+
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <div class="relative hidden md:block">
+                        <button id="locationButton" aria-label="Pilih Lokasi" aria-haspopup="true" aria-expanded="false" class="flex items-center text-sm text-text-primary hover:text-olx-blue transition px-2 py-1.5 rounded-md hover:bg-gray-100">
+                            <svg class="w-5 h-5 mr-1 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span id="currentLocation" class="truncate max-w-[100px]">Indonesia</span>
+                            <svg class="w-4 h-4 ml-1 flex-shrink-0 text-text-muted" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div id="locationDropdown" class="dropdown-menu absolute right-0 mt-2.5 w-48 bg-bg-card rounded-md shadow-xl py-1 hidden border border-border-default" role="menu">
+                            <a href="#" data-location="Jakarta" role="menuitem" class="location-item block px-4 py-2 text-sm text-text-primary hover:bg-gray-100 transition">Jakarta</a>
+                            <a href="#" data-location="Bandung" role="menuitem" class="location-item block px-4 py-2 text-sm text-text-primary hover:bg-gray-100 transition">Bandung</a>
+                            <a href="#" data-location="Surabaya" role="menuitem" class="location-item block px-4 py-2 text-sm text-text-primary hover:bg-gray-100 transition">Surabaya</a>
+                            <a href="#" data-location="Indonesia" role="menuitem" class="location-item block px-4 py-2 text-sm text-text-primary hover:bg-gray-100 transition">Seluruh Indonesia</a>
+                        </div>
+                    </div>
+
+                    <button id="chatButton" title="Pesan" class="text-text-secondary hover:text-olx-blue transition p-2 rounded-full hover:bg-gray-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </button>
+                    <button id="notificationButton" title="Notifikasi" class="text-text-secondary hover:text-olx-blue transition p-2 rounded-full hover:bg-gray-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </button>
+
+                    <div class="relative">
+                        <button id="profileButton" aria-label="Tombol Profil Pengguna" aria-haspopup="true" aria-expanded="false" class="p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olx-blue">
+                            <img id="profileImage" src="https://placehold.co/32x32/D1D5DB/4B5563?text=G&font=Inter&bold=true" alt="Profil Pengguna" class="w-8 h-8 rounded-full object-cover border-2 border-transparent group-hover:border-olx-blue transition">
+                        </button>
+                        <div id="profileDropdown" class="dropdown-menu absolute right-0 mt-2 w-56 bg-bg-card rounded-md shadow-lg py-1 hidden border border-border-default">
+                            </div>
+                    </div>
+
+                    <button id="sellButton" class="bg-olx-orange text-white px-3.5 py-2 rounded-md text-sm font-semibold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-olx-orange focus:ring-offset-1 transition hidden lg:flex items-center space-x-1.5 shadow-sm hover:shadow-md">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                        <span>Jual</span>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-2 pb-3 sm:hidden">
+                <div class="relative">
+                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-text-muted" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    </span>
+                    <input type="text" id="searchInputMobile" aria-label="Kolom Pencarian Mobile" placeholder="Cari barang impianmu..."
+                           class="w-full py-2.5 pl-10 pr-4 border border-border-input rounded-md focus:ring-2 focus:ring-olx-blue focus:border-olx-blue transition text-sm shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <nav class="bg-bg-header border-t border-b border-border-default" aria-label="Kategori Utama">
+            <div class="container mx-auto px-4">
+                <div id="categoryNavigation" class="flex space-x-1 sm:space-x-2 md:space-x-3 overflow-x-auto py-2.5 no-scrollbar">
+                    <a href="?category=semua" data-category="semua" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors">Semua Kategori</a>
+                    <a href="?category=mobil" data-category="mobil" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors">Mobil</a>
+                    <a href="?category=motor" data-category="motor" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors">Motor</a>
+                    <a href="?category=properti" data-category="properti" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors">Properti</a>
+                    <a href="?category=handphone" data-category="handphone" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors">Handphone</a>
+                    <a href="?category=elektronik" data-category="elektronik" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors hidden sm:inline-block">Elektronik & Gadget</a>
+                    <a href="?category=hobi" data-category="hobi" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors hidden md:inline-block">Hobi & Olahraga</a>
+                    <a href="?category=rumahtangga" data-category="rumahtangga" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors hidden md:inline-block">Rumah Tangga</a>
+                    <a href="?category=jasa" data-category="jasa" class="category-nav-item flex-shrink-0 px-3 py-1.5 text-sm font-medium text-text-primary rounded-full hover:bg-gray-100 hover:text-olx-blue focus:bg-olx-blue focus:text-white focus:outline-none transition-colors hidden lg:inline-block">Jasa & Lowongan Kerja</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+        <section id="heroBanner" class="mb-10 rounded-xl overflow-hidden shadow-lg">
+            <div class="swiper-container h-52 md:h-72 lg:h-96">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../assets/Banner1.jpg" alt="Banner Promosi 1: Diskon hingga 50%" class="w-full h-full object-cover"></div>
+                    <div class="swiper-slide"><img src="../assets/Banner2.jpg" alt="Banner Promosi 2: Mobil Bekas Pilihan" class="w-full h-full object-cover"></div>
+                    <div class="swiper-slide"><img src="../assets/Banner3.jpg" alt="Banner Promosi 3: Properti Impian" class="w-full h-full object-cover"></div>
+                    <div class="swiper-slide"><img src="../assets/Banner4.jpg" alt="Banner Promosi 3: Properti Impian" class="w-full h-full object-cover"></div>
+                    <div class="swiper-slide"><img src="../assets/Banner5.jpg" alt="Banner Promosi 3: Properti Impian" class="w-full h-full object-cover"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next" aria-label="Slide berikutnya"></div>
+                <div class="swiper-button-prev" aria-label="Slide sebelumnya"></div>
+            </div>
+        </section>
+
+        <section id="recommendations">
+            <div class="flex justify-between items-center mb-5">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-brand-dark">Rekomendasi untuk Anda</h2>
+                    <p class="text-sm text-text-secondary">Pilihan terbaik berdasarkan pencarian populer.</p>
+                </div>
+                <a href="?page=rekomendasi-semua" class="text-sm font-medium text-olx-blue hover:underline whitespace-nowrap">Lihat Semua &rarr;</a>
+            </div>
+
+            <div id="productList" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
+                <a href="calya.html" class="product-card group bg-bg-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="../assets/calya.png" alt="Toyota Calya G A/T 2020" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <span class="absolute top-2.5 left-2.5 bg-olx-orange text-white text-[10px] px-2 py-0.5 rounded-sm font-semibold uppercase tracking-wider shadow">Unggulan</span>
+                    </div>
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-sm sm:text-base text-brand-dark truncate group-hover:text-olx-blue transition-colors mb-1" title="Toyota Calya G A/T 2020">Toyota Calya G A/T 2020</h3>
+                        <p class="text-olx-orange font-bold text-base sm:text-lg">Rp 112.000.000</p>
+                        <p class="text-xs text-text-secondary mt-1.5 truncate">Jakarta Selatan</p>
+                        <p class="text-xs text-text-muted mt-auto pt-2">2 hari lalu</p>
+                    </div>
+                </a>
+                <a href="product-detail.html?id=iphone13" class="product-card group bg-bg-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden"><img src="../assets/terriosjpeg.png" alt="Toyota Terrios (2021)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-sm sm:text-base text-brand-dark truncate group-hover:text-olx-blue transition-colors mb-1" title="Toyota Terrios (2021)">Toyota Terrios (2021)</h3>
+                        <p class="text-olx-orange font-bold text-base sm:text-lg">Rp 190.000.000</p>
+                        <p class="text-xs text-text-secondary mt-1.5 truncate">Panunggangan, Jakarta Selatan</p>
+                        <p class="text-xs text-text-muted mt-auto pt-2">Baru</p>
+                    </div>
+                </a>
+                 <a href="product-detail.html?id=apartemenSCBD" class="product-card group bg-bg-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden"><img src="../assets/avanza.png" alt="Toyota Avanza (2022)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-sm sm:text-base text-brand-dark truncate group-hover:text-olx-blue transition-colors mb-1" title="Toyota Avanza (2022)">Toyota Avanza (2022)</h3>
+                        <p class="text-olx-orange font-bold text-base sm:text-lg">Rp 200.000.000</p>
+                        <p class="text-xs text-text-secondary mt-1.5 truncate">Panunggangan, Jakarta Selatan</p>
+                        <p class="text-xs text-text-muted mt-auto pt-2">Baru</p>
+                    </div>
+                </a>
+                <a href="product-detail.html?id=nmax2021" class="product-card group bg-bg-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden"><img src="../assets/xpanderjpeg.png" alt="Mitsubishi Expander (2022)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-sm sm:text-base text-brand-dark truncate group-hover:text-olx-blue transition-colors mb-1" title="Mitsubishi Expander (2022)">Mitsubishi Expander (2022)</h3>
+                        <p class="text-olx-orange font-bold text-base sm:text-lg">Rp 220.000.000</p>
+                        <p class="text-xs text-text-secondary mt-1.5 truncate">PIK, Jakarta Utara</p>
+                        <p class="text-xs text-text-muted mt-auto pt-2">Second</p>
+                    </div>
+                </a>
+                <a href="product-detail.html?id=zenbook" class="product-card group bg-bg-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden"><img src="../assets/brv.png" alt="Honda BR-V (2023)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-sm sm:text-base text-brand-dark truncate group-hover:text-olx-blue transition-colors mb-1" title="Honda BR-V (2023)">Honda BR-V (2023)</h3>
+                        <p class="text-olx-orange font-bold text-base sm:text-lg">Rp 220.000.000</p>
+                        <p class="text-xs text-text-secondary mt-1.5 truncate">PIK, Jakarta Utara</p>
+                        <p class="text-xs text-text-muted mt-auto pt-2">Baru</p>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-10">
+                <button id="loadMoreButton" class="bg-olx-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-olx-blue focus:ring-offset-2 transition shadow-md hover:shadow-lg">
+                    Muat Lebih Banyak Rekomendasi
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-bg-footer text-footer-link pt-12 pb-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 text-sm">
+                <div>
+                    <h5 class="font-semibold text-white mb-4 text-base">Kategori Populer</h5>
+                    <ul class="space-y-2.5">
+                        <li><a href="?category=mobil-bekas" class="hover:text-white transition">Mobil Bekas</a></li>
+                        <li><a href="?category=motor-bekas" class="hover:text-white transition">Motor Bekas</a></li>
+                        <li><a href="?category=rumah-dijual" class="hover:text-white transition">Rumah Dijual</a></li>
+                        <li><a href="?category=apartemen-disewakan" class="hover:text-white transition">Apartemen Disewakan</a></li>
+                        <li><a href="?category=hp-tablet" class="hover:text-white transition">Handphone & Tablet</a></li>
+                         <li><a href="?category=elektronik-footer" class="hover:text-white transition">Elektronik</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4 text-base">Area Populer</h5>
+                    <ul class="space-y-2.5">
+                        <li><a href="?area=jaksel" class="hover:text-white transition">Jakarta Selatan</a></li>
+                        <li><a href="?area=bandung" class="hover:text-white transition">Bandung Kota</a></li>
+                        <li><a href="?area=surabaya" class="hover:text-white transition">Surabaya Kota</a></li>
+                        <li><a href="?area=medan" class="hover:text-white transition">Medan Kota</a></li>
+                        <li><a href="?area=semarang" class="hover:text-white transition">Semarang Kota</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4 text-base">Tentang OLX</h5>
+                    <ul class="space-y-2.5">
+                        <li><a href="about.html" class="hover:text-white transition">Tentang OLX Indonesia</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Karir di OLX</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition">Blog OLX</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Syarat & Ketentuan</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Kebijakan Privasi</a></li>
+                        <li><a href="sitemap.html" class="hover:text-white transition">Peta Situs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4 text-base">Bantuan & Kontak</h5>
+                    <ul class="space-y-2.5">
+                        <li><a href="help.html" class="hover:text-white transition">Pusat Bantuan OLX</a></li>
+                        <li><a href="safety-tips.html" class="hover:text-white transition">Tips Aman Bertransaksi</a></li>
+                        <li><a href="report-issue.html" class="hover:text-white transition">Laporkan Masalah</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Hubungi Kami</a></li>
+                    </ul>
+                    <h5 class="font-semibold text-white mt-6 mb-3 text-base">Ikuti Kami</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/OLXIndonesia" target="_blank" rel="noopener noreferrer" aria-label="Facebook OLX" class="text-footer-link hover:text-white transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5.333 14.692 5.333H17V1.713C16.393 1.668 15.095 1.503 13.803 1.5C11.035 1.5 9 3.603 9 6.333V8z"></path></svg></a>
+                        <a href="https://instagram.com/olxindonesia" target="_blank" rel="noopener noreferrer" aria-label="Instagram OLX" class="text-footer-link hover:text-white transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.272.058 2.166.29 2.913.588.762.303 1.36.703 1.96 1.308.603.603.998 1.2.588 1.962.29.747.53 1.64.588 2.912.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.272-.29 2.166-.588 2.913-.303.762-.703 1.36-1.308 1.96-.603.603-1.2.998-1.962.588-.747.29-1.64.53-2.912.588-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.272-.058-2.166-.29-2.913-.588-.762-.303-1.36-.703-1.96-1.308-.603-.603-.998-1.2-.588-1.962-.29-.747-.53-1.64-.588-2.912-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.272.29-2.166.588-2.913.303-.762.703 1.36 1.308-1.96.603-.603 1.2-.998 1.962-.588.747-.29 1.64-.53 2.912-.588C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.84 3.965 8.552 3.977 7.29 4.035c-1.14.053-1.805.27-2.227.428-.446.167-.76.36-1.08.68-.32.32-.514.633-.68 1.08-.157.422-.375 1.087-.428 2.228-.058 1.26-.07 1.55-.07 4.51s.012 3.25.07 4.51c.053 1.14.27 1.805.428 2.227.167.446.36.76.68 1.08.32.32.633.514 1.08.68.422.157 1.087.375 2.228.428 1.26.058 1.55.07 4.51.07s3.25-.012 4.51-.07c1.14-.053 1.805-.27 2.227-.428.446-.167.76-.36 1.08-.68.32.32.514.633-.68 1.08.157-.422.375-1.087.428-2.228.058-1.26.07-1.55.07-4.51s-.012-3.25-.07-4.51c-.053-1.14-.27-1.805-.428-2.227-.167-.446-.36-.76-.68-1.08-.32-.32-.633-.514-1.08-.68-.422-.157-1.087-.375-2.228-.428C15.25 3.977 15.16 3.965 12 3.965zm0 3.075c-2.67 0-4.835 2.165-4.835 4.835s2.165 4.835 4.835 4.835 4.835-2.165 4.835-4.835S14.67 7.04 12 7.04zm0 7.67c-1.595 0-2.882-1.287-2.882-2.882s1.287-2.882 2.882-2.882 2.882 1.287 2.882 2.882-1.287 2.882-2.882 2.882zm4.965-7.825a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z"></path></svg></a>
+                        <a href="https://twitter.com/OLX_Indonesia" target="_blank" rel="noopener noreferrer" aria-label="Twitter OLX" class="text-footer-link hover:text-white transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
+                        <a href="https://www.youtube.com/user/OLXIndonesia" target="_blank" rel="noopener noreferrer" aria-label="YouTube OLX" class="text-footer-link hover:text-white transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 7.304a2.74 2.74 0 00-1.926-1.94C17.926 5 12 5 12 5s-5.926 0-7.656.364a2.74 2.74 0 00-1.926 1.94C2 9.042 2 12 2 12s0 2.958.42 4.696a2.74 2.74 0 001.926 1.94C6.074 19 12 19 12 19s5.926 0 7.656-.364a2.74 2.74 0 001.926-1.94C22 14.958 22 12 22 12s0-2.958-.418-4.696zM9.75 15.5V8.5l6.5 3.5-6.5 3.5z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-brand-dark-secondary pt-8 mt-8 text-center">
+                <p class="text-xs text-footer-text">&copy; 2006-2025 OLX Indonesia. Bagian dari OLX Group.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

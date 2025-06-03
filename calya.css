@@ -1,0 +1,123 @@
+/* product-detail.css - V3 (Layout Ditingkatkan) */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f8f8; /* page-bg dari Tailwind config */
+    color: #1F2937; /* text-primary */
+}
+
+/* Swiper Gallery Styles */
+.gallery-top {
+    /* Pastikan kontainer utama galeri memiliki posisi relatif jika tombol navigasi absolute */
+    position: relative;
+}
+.gallery-top .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gallery-thumbs .swiper-slide {
+    opacity: 0.6;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 0.375rem; /* rounded-md */
+    cursor: pointer;
+    overflow: hidden;
+    /* Menambahkan aspect ratio untuk konsistensi thumbnail jika gambar bervariasi */
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+    border-color: #00A5EC; /* olx-blue */
+}
+
+.gallery-thumbs .swiper-slide img {
+    object-fit: cover;
+}
+
+/* Styling untuk tombol navigasi Swiper di galeri utama */
+.gallery-top .swiper-button-next,
+.gallery-top .swiper-button-prev {
+    color: #FFFFFF !important;
+    background-color: rgba(0, 0, 0, 0.4); /* Lebih kontras */
+    width: 2.75rem; /* w-11 Tailwind, atau sesuaikan */
+    height: 2.75rem; /* h-11 Tailwind */
+    border-radius: 9999px; /* rounded-full */
+    transition: background-color 0.2s ease;
+    margin-top: -1.375rem; /* Setengah dari tinggi tombol untuk centering vertikal */
+}
+.gallery-top .swiper-button-next:hover,
+.gallery-top .swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+/* Ukuran ikon panah di dalam tombol navigasi */
+.gallery-top .swiper-button-next::after,
+.gallery-top .swiper-button-prev::after {
+    font-size: 1rem !important; /* Sedikit lebih besar untuk visibilitas */
+}
+
+/* Styling untuk paginasi Swiper di galeri utama */
+.gallery-top .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    transition: background-color 0.2s ease;
+}
+.gallery-top .swiper-pagination-bullet-active {
+    background-color: #FFFFFF !important;
+    width: 10px; /* Sedikit lebih besar untuk yang aktif */
+    height: 10px;
+}
+
+/* Tab Styles */
+.tab-button.active {
+    border-color: #00A5EC; /* olx-blue */
+    color: #00A5EC;
+    background-color: #EFF6FF; /* Tailwind blue-50 */
+}
+.tab-button {
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Prose styles for description */
+.prose ul {
+    list-style-type: disc;
+    list-style-position: outside;
+    padding-left: 1.25rem; /* pl-5 */
+    margin-top: 0.75em; /* Sedikit lebih banyak spasi */
+    margin-bottom: 0.75em;
+}
+.prose ul li {
+    margin-bottom: 0.35em; /* Spasi antar item list */
+}
+.prose li::marker {
+    color: #6B7281; /* text-muted atau gray-500 */
+}
+.prose strong {
+    font-weight: 600;
+    color: #1F2937;
+}
+.prose h4 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    margin-top: 1rem; /* mb-4 */
+    margin-bottom: 0.5rem; /* mb-2 */
+    color: #002F34; /* brand-dark */
+}
+.prose p {
+    margin-bottom: 0.75em;
+}
+
+/* Styling untuk tombol favorit yang aktif */
+#favoriteButton.favorited svg {
+    fill: #EF4444; /* Tailwind red-500 */
+    color: #EF4444;
+}
+
+/* Styling untuk modal nomor telepon */
+#phoneModal p#sellerPhoneNumberDisplay { /* Target spesifik untuk nomor telepon */
+    letter-spacing: 1px; /* Agar nomor lebih mudah dibaca */
+}

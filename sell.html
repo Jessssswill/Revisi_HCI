@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasang Iklan Baru - OLX Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css"> <link rel="stylesheet" href="sell.css">
+    <link rel="icon" href="../assets/Olx-indonesia-logo.svg 1.png" type="image/png"> <script>
+        // Konfigurasi Tailwind CSS
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        },
+                        colors: {
+                            'olx-blue': '#00A5EC',
+                            'olx-orange': '#FF7E00',
+                            'brand-dark': '#002F34',
+                            'text-primary': '#1F2937',
+                            'text-secondary': '#4B5563',
+                            'text-muted': '#9CA3AF',
+                            'header-bg': '#FFFFFF',
+                            'page-bg': '#F7FAFC',
+                            'card-bg': '#FFFFFF',
+                            'footer-bg': '#002F34',
+                            'border-default': '#E5E7EB',
+                            'input-border': '#D1D5DB',
+                            'input-focus-border': '#00A5EC',
+                            'success-bg': '#D1FAE5',
+                            'success-text': '#065F46',
+                            'error-bg': '#FEE2E2',
+                            'error-text': '#991B1B',
+                            'step-active-bg': '#00A5EC',
+                            'step-inactive-bg': '#E5E7EB',
+                            'step-active-text': '#FFFFFF',
+                            'step-inactive-text': '#6B7281',
+                        }
+                    }
+                }
+            };
+        } else {
+            console.error("Tailwind CSS object not found.");
+        }
+    </script>
+</head>
+<body class="antialiased bg-page-bg text-text-primary">
+
+    <header id="mainHeader" class="bg-header-bg shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3 h-16">
+                <a href="javascript:history.back()" class="flex items-center space-x-2 text-olx-blue hover:opacity-80 transition-opacity" aria-label="Kembali ke halaman sebelumnya">
+                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="font-semibold text-sm sm:text-base">Kembali</span>
+                </a>
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button id="chatButtonHeader" title="Pesan" class="text-text-secondary hover:text-olx-blue transition p-2 rounded-full hover:bg-gray-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </button>
+                    <div class="relative">
+                        <button id="profileButtonHeader" aria-label="Tombol Profil Pengguna" aria-haspopup="true" aria-expanded="false" class="p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olx-blue">
+                            <img id="profileImageHeader" src="https://placehold.co/32x32/D1D5DB/4B5563?text=G&font=Inter&bold=true" alt="Profil Pengguna" class="w-8 h-8 rounded-full object-cover border-2 border-transparent">
+                        </button>
+                        <div id="profileDropdownHeader" class="dropdown-menu absolute right-0 mt-2 w-56 bg-card-bg rounded-md shadow-lg py-1 hidden border border-border-default z-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-card-bg p-6 sm:p-8 rounded-xl shadow-xl max-w-3xl mx-auto">
+            <h1 class="text-2xl sm:text-3xl font-bold text-brand-dark mb-2 text-center">Pasang Iklan Anda</h1>
+            <p class="text-text-secondary text-center mb-8">Isi detail barang atau jasa yang ingin Anda jual.</p>
+
+            <div id="stepIndicatorContainer" class="flex items-center justify-center space-x-2 sm:space-x-4 mb-10">
+                </div>
+
+            <form id="formJual" class="space-y-6">
+                <div id="step-1" class="form-step active-step">
+                    <h2 class="text-xl font-semibold text-brand-dark mb-4">Langkah 1: Pilih Kategori</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="mainCategory" class="form-label">Kategori Utama</label>
+                            <select id="mainCategory" name="mainCategory" class="form-select">
+                                <option value="">-- Pilih Kategori Utama --</option>
+                                <option value="mobil">Mobil</option>
+                                <option value="motor">Motor</option>
+                                <option value="properti">Properti</option>
+                                <option value="elektronik">Elektronik & Gadget</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="hobi">Hobi & Olahraga</option>
+                                <option value="rumah-tangga">Rumah Tangga</option>
+                                <option value="jasa">Jasa & Lowongan Kerja</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                            <p id="mainCategoryError" class="error-message"></p>
+                        </div>
+                        <div>
+                            <label for="subCategory" class="form-label">Sub-Kategori</label>
+                            <select id="subCategory" name="subCategory" class="form-select" disabled>
+                                <option value="">-- Pilih Sub-Kategori --</option>
+                                </select>
+                             <p id="subCategoryError" class="error-message"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-2" class="form-step">
+                    <h2 class="text-xl font-semibold text-brand-dark mb-4">Langkah 2: Detail Iklan</h2>
+                    <div>
+                        <label for="judulIklan" class="form-label">Judul Iklan</label>
+                        <input type="text" id="judulIklan" name="judulIklan" class="form-input" placeholder="Contoh: Toyota Avanza G 2019 Mulus Terawat">
+                        <p id="judulIklanError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label for="deskripsiIklan" class="form-label">Deskripsi</label>
+                        <textarea id="deskripsiIklan" name="deskripsiIklan" rows="5" class="form-textarea" placeholder="Jelaskan detail barang/jasa Anda, kondisi, fitur, dll."></textarea>
+                        <p id="deskripsiIklanError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label for="hargaIklan" class="form-label">Harga (Rp)</label>
+                        <input type="number" id="hargaIklan" name="hargaIklan" class="form-input" placeholder="Contoh: 150000000">
+                        <div class="flex items-center mt-2">
+                            <input type="checkbox" id="negoHarga" name="negoHarga" class="form-checkbox">
+                            <label for="negoHarga" class="ml-2 text-sm text-text-secondary">Bisa Nego</label>
+                        </div>
+                        <p id="hargaIklanError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label class="form-label">Unggah Foto (Maks. 5 foto)</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-border-default border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-text-muted" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-text-secondary">
+                                    <label for="fotoIklan" class="relative cursor-pointer bg-card-bg rounded-md font-medium text-olx-blue hover:text-olx-orange focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-olx-blue">
+                                        <span>Unggah file</span>
+                                        <input id="fotoIklan" name="fotoIklan[]" type="file" class="sr-only" multiple accept="image/png, image/jpeg, image/webp">
+                                    </label>
+                                    <p class="pl-1">atau seret dan lepas</p>
+                                </div>
+                                <p class="text-xs text-text-muted">PNG, JPG, WEBP hingga 5MB per foto</p>
+                            </div>
+                        </div>
+                        <div id="imagePreviewContainer" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                            </div>
+                        <p id="fotoIklanError" class="error-message"></p>
+                    </div>
+                </div>
+
+                <div id="step-3" class="form-step">
+                    <h2 class="text-xl font-semibold text-brand-dark mb-4">Langkah 3: Informasi Kontak & Lokasi</h2>
+                    <div>
+                        <label for="namaPenjual" class="form-label">Nama Penjual</label>
+                        <input type="text" id="namaPenjual" name="namaPenjual" class="form-input" placeholder="Nama Anda yang akan tampil di iklan">
+                        <p id="namaPenjualError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label for="nomorTelepon" class="form-label">Nomor Telepon (WhatsApp)</label>
+                        <input type="tel" id="nomorTelepon" name="nomorTelepon" class="form-input" placeholder="Contoh: 081234567890">
+                        <p id="nomorTeleponError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label for="lokasiIklan" class="form-label">Lokasi (Kota/Kabupaten)</label>
+                        <input type="text" id="lokasiIklan" name="lokasiIklan" class="form-input" placeholder="Contoh: Jakarta Selatan">
+                        <p id="lokasiIklanError" class="error-message"></p>
+                    </div>
+                    <div>
+                        <label for="alamatLengkap" class="form-label">Alamat Lengkap (Opsional)</label>
+                        <textarea id="alamatLengkap" name="alamatLengkap" rows="3" class="form-textarea" placeholder="Detail alamat untuk COD (tidak akan ditampilkan publik sepenuhnya)"></textarea>
+                    </div>
+                </div>
+
+                <div id="step-4" class="form-step">
+                    <h2 class="text-xl font-semibold text-brand-dark mb-6">Langkah 4: Review & Pasang Iklan</h2>
+                    <div id="reviewContainer" class="space-y-4 p-4 border border-border-default rounded-lg bg-gray-50">
+                        <h3 class="text-lg font-medium text-brand-dark border-b pb-2">Ringkasan Iklan Anda</h3>
+                        <p class="text-text-muted">Harap periksa kembali semua detail iklan Anda sebelum dipasang.</p>
+                    </div>
+                    <div class="mt-6">
+                        <input type="checkbox" id="termsAgreement" name="termsAgreement" class="form-checkbox">
+                        <label for="termsAgreement" class="ml-2 text-sm text-text-secondary">Saya setuju dengan <a href="terms.html" class="text-olx-blue hover:underline" target="_blank">Syarat & Ketentuan</a> OLX.</label>
+                        <p id="termsAgreementError" class="error-message"></p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-6 border-t border-border-default">
+                    <button type="button" id="prevStepButton" class="btn-secondary-outline hidden">Sebelumnya</button>
+                    <button type="button" id="nextStepButton" class="btn-primary ml-auto">Berikutnya</button>
+                    <button type="submit" id="submitAdButton" class="btn-primary hidden ml-auto">Pasang Iklan Sekarang</button>
+                </div>
+            </form>
+            <div id="formSubmissionStatus" class="mt-6"></div>
+        </div>
+    </main>
+
+    <footer class="bg-footer-bg text-footer-link pt-10 pb-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p class="text-xs text-footer-text">&copy; 2006-2025 OLX Indonesia. Bagian dari OLX Group.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script> <script src="sell.js"></script>
+</body>
+</html>

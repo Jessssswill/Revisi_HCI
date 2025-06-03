@@ -1,0 +1,140 @@
+.profile-nav-item {
+    color: #4B5563;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile-nav-item:hover {
+    background-color: #F3F4F6; 
+    color: #00A5EC;
+}
+
+.profile-nav-item.active {
+    background-color: #EBF8FF; 
+    color: #00A5EC; 
+    font-weight: 600; 
+}
+.profile-nav-item.active svg {
+    color: #00A5EC; 
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.625rem 0.875rem; 
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem; 
+    font-size: 0.875rem; 
+    color: #1F2937;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #00A5EC; 
+    box-shadow: 0 0 0 2px rgba(0, 165, 236, 0.2);
+}
+
+.form-input.bg-gray-100.cursor-not-allowed { 
+    background-color: #F3F4F6;
+    cursor: not-allowed;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px; 
+    height: 24px; 
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; 
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; 
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #00A5EC; 
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #00A5EC;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px); 
+}
+
+.slider.round {
+    border-radius: 24px; 
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.ad-card {
+    border: 1px solid #E5E7EB; 
+    transition: box-shadow 0.3s ease;
+}
+.ad-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.ad-card img {
+    aspect-ratio: 16 / 10; 
+    object-fit: cover;
+}
+.ad-status-aktif {
+    background-color: #D1FAE5; 
+    color: #065F46; 
+}
+.ad-status-nonaktif {
+    background-color: #FEF3C7; 
+    color: #92400E; 
+}
+.ad-status-terjual {
+    background-color: #E5E7EB; 
+    color: #4B5563; 
+}
+
+.status-message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+.status-message.success {
+    background-color: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #A7F3D0;
+}
+.status-message.error {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
+}
+
+#confirmationModal button {
+    min-width: 80px;
+}
