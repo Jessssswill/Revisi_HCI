@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
             promosiOlx: false,
         },
         ads: [
-            { id: "ad1", title: "Toyota Avanza G 2018 Mulus", price: "Rp 145.000.000", image: "../assets/avz.png", status: "aktif", views: 120, date: "2 hari lalu" },
-            { id: "ad2", title: "iPhone 11 Pro 256GB Bekas", price: "Rp 7.500.000", image: "../assets/ip11.png", status: "nonaktif", views: 305, date: "1 minggu lalu" },
-            { id: "ad3", title: "Apartemen Disewakan Bulanan", price: "Rp 3.000.000/bulan", image: "../assets/apart.png", status: "terjual", views: 500, date: "1 bulan lalu" },
+            { id: "ad1", title: "Toyota Avanza G 2018 Mulus", price: "Rp 145.000.000", image: "assets/avz.png", status: "aktif", views: 120, date: "2 hari lalu" },
+            { id: "ad2", title: "iPhone 11 Pro 256GB Bekas", price: "Rp 7.500.000", image: "assets/ip11.png", status: "nonaktif", views: 305, date: "1 minggu lalu" },
+            { id: "ad3", title: "Apartemen Disewakan Bulanan", price: "Rp 3.000.000/bulan", image: "assets/apart.png", status: "terjual", views: 500, date: "1 bulan lalu" },
         ],
         favorites: [
-            { id: "fav1", title: "MCLaren", price: "Rp 6.999.000.000", image: "../assets/mcl.png", seller: "MobilOke", location: "Bandung" },
-            { id: "fav2", title: "Porsche", price: "Rp 4.666.777.000", image: "../assets/por.png", seller: "GadgetMurah", location: "Surabaya" },
+            { id: "fav1", title: "MCLaren", price: "Rp 6.999.000.000", image: "assets/mcl.png", seller: "MobilOke", location: "Bandung" },
+            { id: "fav2", title: "Porsche", price: "Rp 4.666.777.000", image: "assets/por.png", seller: "GadgetMurah", location: "Surabaya" },
         ]
     };
 

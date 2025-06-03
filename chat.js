@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { sender: "Rina", text: "Halo, Mas/Mbak. Masih ada iPhone 12 Pro Max yang di iklan? Harganya masih Rp 12 juta?", time: "10:27", type: "received", avatarText: "R" },
                 { sender: "User", text: "Halo, Mbak. Iya, ada. Rp 12 juta, nego dikit boleh. Kondisi mulus, RAM 6GB, 128GB, garansi 3 bulan.", time: "10:28", type: "sent", avatarText: "U" },
                 { sender: "Rina", text: "Oh, bagus kalau masih mulus. Bisa minta foto tambahan nggak? Terus, apa aja yang dapet kalau beli?", time: "10:29", type: "received", avatarText: "R" },
-                { sender: "User", text: "Bisa. Ini foto tambahan. Dapet unit, charger, dus, bonus softcase kalau deal hari ini.", time: "10:30", type: "sent", image: "../assets/iphone.png", avatarText: "U" },
+                { sender: "User", text: "Bisa. Ini foto tambahan. Dapet unit, charger, dus, bonus softcase kalau deal hari ini.", time: "10:30", type: "sent", image: "assets/iphone.png", avatarText: "U" },
                 { sender: "Rina", text: "Oke, fotonya jelas. Untuk baterai healthnya berapa persen ya?", time: "10:35", type: "received", avatarText: "R"},
                 { sender: "User", text: "Battery health masih 92%, Mbak. Awet seharian kok.", time: "10:36", type: "sent", avatarText: "U"},
                 { sender: "Rina", text: "Sip. Kalau COD di daerah Jaksel bisa? Sekitaran Blok M gitu?", time: "10:38", type: "received", avatarText: "R"},
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { sender: "Siti", text: "Fasilitasnya apa aja ya kak? Terus harga per bulannya berapa?", time: "Sabtu", type: "received", avatarText: "S"},
                 { sender: "User", text: "Fasilitas standar: kasur, lemari, meja belajar, kamar mandi dalam. Harga Rp 1.500.000/bulan sudah termasuk listrik dan air.", time: "Sabtu", type: "sent", avatarText: "U"},
                 { sender: "Siti", text: "Ada foto kamarnya kak? Boleh minta?", time: "Minggu", type: "received", avatarText: "S"},
-                { sender: "User", text: "Ini fotonya ya.", time: "Minggu", type: "sent", image: "../assets/kos.png", avatarText: "U"},
+                { sender: "User", text: "Ini fotonya ya.", time: "Minggu", type: "sent", image: "assets/kos.png", avatarText: "U"},
                 { sender: "Siti", text: "Oke kak, makasih infonya!", time: "Minggu", type: "received", avatarText: "S"}
             ]
         }
